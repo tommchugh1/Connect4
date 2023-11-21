@@ -1,16 +1,24 @@
 
+class setup:
 
-default_setup = {1: ["|               |"], 
-                2: ["|               |"], 
-                3: ["|               |"], 
-                4: ["|               |"], 
-                5: ["|               |"], 
-                6: ["|               |"], 
-                7: ["| 1 2 3 4 5 6 7 |"]}
+    def __init__(self):
+        self.default = {1: "|               |", 
+                        2: "|               |", 
+                        3: "|               |", 
+                        4: "|               |", 
+                        5: "|               |", 
+                        6: "|               |", 
+                        7: "| 1 2 3 4 5 6 7 |"}
+        self.active = self.default
 
+    def __repr__(self):
+        state = ""
+        for row in self.active.values():
+            state += row + "\n"
+        return state
 
-def reset_game():
-    active_setup = default_setup
+    def reset_game(self):
+        self.active = self.default
 
 def startup():
     print("WELCOME TO CONNECT 4:")
@@ -23,7 +31,12 @@ def startup():
     while len(player2_symbol) > 1:
         player2_symbol = input("Symbols can only be 1 character, please input again: ")
 
-reset_game()
+#def input(setup, player, position):
+
+grid = setup()
+print(grid)
+
+grid.reset_game()
 startup()
 
 
